@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Digit Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 60px;
+            padding: 8px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #cc0000;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Random Digit Generator</h2>
+    <input type="number" id="minValue" placeholder="Min" min="0">
+    <input type="number" id="maxValue" placeholder="Max" min="0">
+    <button onclick="generateRandomNumber()">Generate</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function generateRandomNumber() {
+        const min = parseInt(document.getElementById('minValue').value);
+        const max = parseInt(document.getElementById('maxValue').value);
+
+        if (isNaN(min) || isNaN(max) || min > max) {
+            document.getElementById('result').textContent = 'Please enter a valid range!';
+            return;
+        }
+
+        const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        document.getElementById('result').textContent = randomNum;
+    }
+</script>
+
+</body>
+</html>
